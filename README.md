@@ -42,6 +42,21 @@ Suggested fix:
   "mcpServers": {
     "netassist": {
       "command": "npx",
+      "args": ["-y", "github:Edge-Echo/mcp-netassist"]
+    }
+  }
+}
+```
+
+The built `lib/` ships in the repository, so the GitHub form needs no build step.
+
+**From npm** (once the first release is published):
+
+```json
+{
+  "mcpServers": {
+    "netassist": {
+      "command": "npx",
       "args": ["-y", "mcp-netassist"]
     }
   }
@@ -51,16 +66,16 @@ Suggested fix:
 **Claude Code:**
 
 ```sh
-claude mcp add netassist -- npx -y mcp-netassist
+claude mcp add netassist -- npx -y github:Edge-Echo/mcp-netassist
 ```
 
-**DeepSeek Harness:**
+**DeepSeek Harness** (same diagnostics as a native plugin, plus `net_doctor` as an agent tool):
 
 ```sh
 dsh plugin --profile web add dsh-netassist
 ```
 
-**From a checkout (no npm):**
+**From a checkout:**
 
 ```json
 {
