@@ -1,0 +1,86 @@
+# mcp-netassist
+
+**Network & proxy diagnostics as an [MCP](https://modelcontextprotocol.io) server.**
+
+Works with any MCP client — Claude Code, Claude Desktop, Cursor, Reasonix, CodeWhale, DeepSeek Harness. Point your agent at it and ask "is GitHub reachable?", "why is my proxy not working?", "what should I change?" — instead of guessing.
+
+Built for the China-network reality: flaky GitHub, proxies that are half-configured, hosts files that fight the proxy, and TUN mode that silently overrides the system proxy.
+
+> Windows-only for now: the checks call PowerShell. The protocol layer is portable; a POSIX backend is the obvious next step.
+
+## Tools
+
+| Tool | Answers |
+|---|---|
+| `net_github_status` | Is github.com reachable right now? DNS, TCP 443, HTTPS status + latency |
+| `net_proxy_status` | What proxy is the system using? Registry settings + env vars, including a disabled-but-leftover value |
+| `net_proxy_probe` | Which local proxy ports are alive? (defaults: 10808, 10809, 7890, 7897, 8888, 1080) |
+| `net_diag` | Full chain for any host: DNS → TCP → HTTP status |
+| `net_hosts_check` | Which GitHub entries are pinned in the hosts file? |
+| `net_doctor` | The whole preflight, with **concrete suggestions about what to change** |
+
+`net_doctor` is the point of this server. Other tools tell you *what is wrong*; it tells you what to do about it:
+
+```
+✔ System proxy: 127.0.0.1:10808
+✔ Proxy port 10808 responding
+✔ GitHub reachable (HTTP 200, 312 ms)
+⚠ TUN-style adapter detected: clash
+   Under TUN mode the system proxy setting is usually ignored — the two can fight each other.
+✔ hosts file clean (no GitHub entries)
+
+Suggested fix:
+- Under TUN mode, clear the Windows system proxy (or exclude github.com) so traffic is not double-handled.
+```
+
+## Setup
+
+**Claude Desktop / Cursor / any JSON-configured client:**
+
+```json
+{
+  "mcpServers": {
+    "netassist": {
+      "command": "npx",
+      "args": ["-y", "mcp-netassist"]
+    }
+  }
+}
+```
+
+**Claude Code:**
+
+```sh
+claude mcp add netassist -- npx -y mcp-netassist
+```
+
+**DeepSeek Harness:**
+
+```sh
+dsh plugin --profile web add dsh-netassist
+```
+
+**From a checkout (no npm):**
+
+```json
+{
+  "mcpServers": {
+    "netassist": { "command": "node", "args": ["/path/to/mcp-netassist/lib/server.js"] }
+  }
+}
+```
+
+## Design notes
+
+- **Read-only.** No tool writes config, changes the proxy, or edits the hosts file. It reports and suggests; you decide.
+- **Injection-safe.** Every user input crosses the PowerShell boundary as Base64, never as interpolated text.
+- **No hidden state.** Each call runs its own checks; nothing is cached between calls, so results are always current.
+- **Two dependencies** (`@modelcontextprotocol/sdk`, `zod`), no native modules.
+
+## Related
+
+Part of the **[dsh-toolkit family](https://github.com/Edge-Echo/dsh-netassist)** — the same diagnostics also ship as a DeepSeek Harness plugin (`dsh-netassist`), which adds `net_doctor` as an agent tool.
+
+## License
+
+MIT
