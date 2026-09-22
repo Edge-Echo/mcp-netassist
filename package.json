@@ -1,0 +1,50 @@
+{
+  "name": "mcp-netassist",
+  "version": "0.1.0",
+  "description": "Network & proxy diagnostics as an MCP server: GitHub reachability, system proxy status, proxy port probing, DNS/TCP/HTTP diagnosis, hosts conflict scan and a doctor that suggests what to change. Works with any MCP client.",
+  "type": "module",
+  "license": "MIT",
+  "author": "dsh-toolkit contributors",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "mcp-server",
+    "network",
+    "proxy",
+    "diagnostics",
+    "github",
+    "troubleshooting",
+    "windows",
+    "china-network"
+  ],
+  "files": [
+    "lib",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Edge-Echo/mcp-netassist.git"
+  },
+  "bin": {
+    "mcp-netassist": "lib/server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "verify": "node scripts/verify.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.7.0"
+  }
+}
