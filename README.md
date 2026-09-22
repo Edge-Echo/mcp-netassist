@@ -85,6 +85,17 @@ dsh plugin --profile web add dsh-netassist
 }
 ```
 
+**In a container:**
+
+```sh
+docker build -t mcp-netassist .
+docker run -i --rm mcp-netassist
+```
+
+> The image is also what directory listings use for introspection checks. Inside a Linux
+> container the server starts and answers `initialize` / `tools/list` normally; the tools
+> themselves need Windows PowerShell, and say so when it is missing.
+
 ## Design notes
 
 - **Read-only.** No tool writes config, changes the proxy, or edits the hosts file. It reports and suggests; you decide.
