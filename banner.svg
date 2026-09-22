@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-label="mcp-netassist — Network &amp; proxy diagnostics as an MCP server">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1220"/>
+      <stop offset="55%" stop-color="#170f2b"/>
+      <stop offset="100%" stop-color="#0b1220"/>
+    </linearGradient>
+    <linearGradient id="brand" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+    <linearGradient id="chip" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f1f2e"/>
+      <stop offset="100%" stop-color="#0c1a28"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="75%" cy="20%" r="65%">
+      <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="15%" cy="90%" r="55%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1280" height="640" fill="url(#bg)"/>
+  <rect width="1280" height="640" fill="url(#glow)"/>
+  <rect width="1280" height="640" fill="url(#glow2)"/>
+  <g fill="#ffffff" opacity="0.05">
+    <circle cx="60" cy="60" r="3"/><circle cx="180" cy="60" r="3"/><circle cx="300" cy="60" r="3"/><circle cx="420" cy="60" r="3"/><circle cx="540" cy="60" r="3"/><circle cx="660" cy="60" r="3"/><circle cx="780" cy="60" r="3"/><circle cx="900" cy="60" r="3"/><circle cx="1020" cy="60" r="3"/><circle cx="1140" cy="60" r="3"/><circle cx="60" cy="180" r="3"/><circle cx="180" cy="180" r="3"/><circle cx="300" cy="180" r="3"/><circle cx="420" cy="180" r="3"/><circle cx="540" cy="180" r="3"/><circle cx="660" cy="180" r="3"/><circle cx="780" cy="180" r="3"/><circle cx="900" cy="180" r="3"/><circle cx="1020" cy="180" r="3"/><circle cx="1140" cy="180" r="3"/><circle cx="60" cy="300" r="3"/><circle cx="180" cy="300" r="3"/><circle cx="300" cy="300" r="3"/><circle cx="1020" cy="300" r="3"/><circle cx="1140" cy="300" r="3"/><circle cx="60" cy="420" r="3"/><circle cx="180" cy="420" r="3"/><circle cx="300" cy="420" r="3"/><circle cx="1020" cy="420" r="3"/><circle cx="1140" cy="420" r="3"/><circle cx="60" cy="540" r="3"/><circle cx="180" cy="540" r="3"/><circle cx="300" cy="540" r="3"/><circle cx="420" cy="540" r="3"/><circle cx="540" cy="540" r="3"/><circle cx="660" cy="540" r="3"/><circle cx="780" cy="540" r="3"/><circle cx="900" cy="540" r="3"/><circle cx="1020" cy="540" r="3"/><circle cx="1140" cy="540" r="3"/>
+  </g>
+
+  <!-- motif -->
+  <g stroke="#a78bfa" stroke-opacity="0.45" stroke-width="2">
+    <line x1="880" y1="120" x2="1010" y2="86"/>
+    <line x1="1010" y1="86" x2="1140" y2="140"/>
+    <line x1="1140" y1="140" x2="1010" y2="228"/>
+    <line x1="1010" y1="228" x2="880" y2="120"/>
+    <line x1="880" y1="120" x2="1140" y2="140"/>
+  </g>
+  <g fill="#a78bfa">
+    <circle cx="880" cy="120" r="8" fill-opacity="0.85"/>
+    <circle cx="1010" cy="86" r="8" fill-opacity="0.6"/>
+    <circle cx="1140" cy="140" r="8" fill-opacity="0.45"/>
+    <circle cx="1010" cy="228" r="8" fill-opacity="0.75"/>
+  </g>
+  <rect x="972" y="60" width="76" height="34" rx="10" fill="none" stroke="#8b5cf6" stroke-opacity="0.6" stroke-width="2"/>
+  <g stroke="#8b5cf6" stroke-opacity="0.75" stroke-width="3" stroke-linecap="round">
+    <line x1="988" y1="94" x2="988" y2="106"/>
+    <line x1="1004" y1="94" x2="1004" y2="106"/>
+    <line x1="1020" y1="94" x2="1020" y2="106"/>
+    <line x1="1036" y1="94" x2="1036" y2="106"/>
+  </g>
+  <text x="866" y="272" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="22" font-weight="700" fill="#8b5cf6" opacity="0.85">MCP</text>
+  <circle cx="110" cy="480" r="34" fill="none" stroke="#8b5cf6" stroke-opacity="0.2" stroke-width="2"/>
+  <circle cx="110" cy="480" r="56" fill="none" stroke="#8b5cf6" stroke-opacity="0.12" stroke-width="1.5"/>
+  <circle cx="110" cy="480" r="80" fill="none" stroke="#8b5cf6" stroke-opacity="0.07" stroke-width="1"/>
+
+  <!-- logo tile -->
+  <rect x="72" y="64" width="96" height="96" rx="24" fill="url(#brand)"/>
+  <rect x="96" y="100" width="48" height="26" rx="8" fill="#ffffff" opacity="0.95"/>
+  <g stroke="#0b1220" stroke-width="4" stroke-linecap="round">
+    <line x1="106" y1="126" x2="106" y2="136"/>
+    <line x1="120" y1="126" x2="120" y2="136"/>
+    <line x1="134" y1="126" x2="134" y2="136"/>
+  </g>
+  <circle cx="120" cy="88" r="7" fill="#ffffff" opacity="0.8"/>
+
+  <text x="72" y="316" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="78" font-weight="800" fill="#f8fafc" letter-spacing="1">mcp-netassist</text>
+  <text x="72" y="374" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="29" font-weight="500" fill="#94a3b8">Network &amp; proxy diagnostics as an MCP server</text>
+<g font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="20" font-weight="600">
+    <rect x="72" y="496" width="247" height="52" rx="26" fill="url(#chip)" stroke="#4c1d95" stroke-width="1.5"/>
+    <text x="195.5" y="529" text-anchor="middle" fill="#c4b5fd">net_github_status</text>
+    <rect x="335" y="496" width="236" height="52" rx="26" fill="url(#chip)" stroke="#4c1d95" stroke-width="1.5"/>
+    <text x="453" y="529" text-anchor="middle" fill="#c4b5fd">net_proxy_status</text>
+    <rect x="587" y="496" width="225" height="52" rx="26" fill="url(#chip)" stroke="#4c1d95" stroke-width="1.5"/>
+    <text x="699.5" y="529" text-anchor="middle" fill="#c4b5fd">net_proxy_probe</text>
+    <rect x="828" y="496" width="148" height="52" rx="26" fill="url(#chip)" stroke="#4c1d95" stroke-width="1.5"/>
+    <text x="902" y="529" text-anchor="middle" fill="#c4b5fd">net_diag</text>
+    <rect x="72" y="562" width="225" height="52" rx="26" fill="url(#chip)" stroke="#4c1d95" stroke-width="1.5"/>
+    <text x="184.5" y="595" text-anchor="middle" fill="#c4b5fd">net_hosts_check</text>
+    <rect x="313" y="562" width="170" height="52" rx="26" fill="url(#chip)" stroke="#4c1d95" stroke-width="1.5"/>
+    <text x="398" y="595" text-anchor="middle" fill="#c4b5fd">net_doctor</text>
+  </g>
+</svg>

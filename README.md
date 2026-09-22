@@ -1,5 +1,7 @@
 # mcp-netassist
 
+![mcp-netassist](https://raw.githubusercontent.com/Edge-Echo/mcp-netassist/main/banner.svg)
+
 **Network & proxy diagnostics as an [MCP](https://modelcontextprotocol.io) server.**
 
 Works with any MCP client — Claude Code, Claude Desktop, Cursor, Reasonix, CodeWhale, DeepSeek Harness. Point your agent at it and ask "is GitHub reachable?", "why is my proxy not working?", "what should I change?" — instead of guessing.
