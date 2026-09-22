@@ -50,7 +50,7 @@ Suggested fix:
 
 The built `lib/` ships in the repository, so the GitHub form needs no build step.
 
-**From npm** (once the first release is published):
+**From npm:**
 
 ```json
 {
