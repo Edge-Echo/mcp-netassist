@@ -1,7 +1,8 @@
 # The gate this repository's claims depend on.
 #
-# build -> test -> verify, on every push and pull request. Without this, every
-# verification number in the README is a claim about one machine on one afternoon.
+# No `cache:` here: this repository ships a pnpm lockfile and no package-lock.json, and
+# setup-node's `cache: npm` fails outright with "Dependencies lock file is not found".
+# Caching is an optimisation; correctness first.
 name: verify
 
 on:
@@ -18,7 +19,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: npm
 
       - name: Install
         run: npm install --no-audit --no-fund
