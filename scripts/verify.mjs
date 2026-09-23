@@ -43,7 +43,10 @@ try {
   const hostsText = hosts.content?.[0]?.text ?? ''
   check('net_hosts_check runs', hostsText.length > 0, hostsText.split('\n')[0].slice(0, 60))
 
-  const doctor = await client.callTool({ name: 'net_doctor', arguments: {} })
+  // net_doctor is the composite check: four parallel checks plus a port probe, each spawning
+// powershell.exe. On a cold runner that can exceed the SDK's 60s default, so this client
+// waits longer — it is standing in for a patient user, not for a strict timeout.
+const doctor = await client.callTool({ name: 'net_doctor', arguments: {} }, undefined, { timeout: 180_000 })
   const doctorText = doctor.content?.[0]?.text ?? ''
   check('net_doctor runs', doctorText.includes('✔') || doctorText.includes('⚠') || doctorText.includes('✖'))
   check('net_doctor gives suggestions or all-clear', doctorText.includes('Suggested fix:') || doctorText.includes('No action needed'))
