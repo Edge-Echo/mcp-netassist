@@ -34,7 +34,7 @@ jobs:
       - name: Warm PowerShell
         shell: pwsh
         run: |
-          powershell.exe -NoProfile -NonInteractive -Command "$PSVersionTable.PSVersion.Major"
+          powershell.exe -NoProfile -NonInteractive -Command '$PSVersionTable.PSVersion.Major'
 
       - name: Verify
         run: npm run verify
