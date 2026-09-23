@@ -2,6 +2,12 @@
 
 ![mcp-netassist](https://raw.githubusercontent.com/Edge-Echo/mcp-netassist/main/banner.svg)
 
+[![npm version](https://img.shields.io/npm/v/mcp-netassist?color=8b5cf6&logo=npm)](https://www.npmjs.com/package/mcp-netassist)
+[![npm downloads](https://img.shields.io/npm/dm/mcp-netassist?color=a78bfa)](https://www.npmjs.com/package/mcp-netassist)
+[![license](https://img.shields.io/badge/license-MIT-c4b5fd)](LICENSE)
+
+> Part of the **dsh-toolkit family**: [dsh-mcp-bridge](https://github.com/Edge-Echo/dsh-mcp-bridge) · [dsh-win-toolkit](https://github.com/Edge-Echo/dsh-win-toolkit) · [dsh-netassist](https://github.com/Edge-Echo/dsh-netassist) · [dsh-driftwatch](https://github.com/Edge-Echo/dsh-driftwatch) · [mcp-netassist](https://github.com/Edge-Echo/mcp-netassist) · [dsh-ledger](https://github.com/Edge-Echo/dsh-ledger)
+
 **Network & proxy diagnostics as an [MCP](https://modelcontextprotocol.io) server.**
 
 Works with any MCP client — Claude Code, Claude Desktop, Cursor, Reasonix, CodeWhale, DeepSeek Harness. Point your agent at it and ask "is GitHub reachable?", "why is my proxy not working?", "what should I change?" — instead of guessing.
