@@ -29,5 +29,12 @@ jobs:
       - name: Build
         run: npm run build
 
+      # A cold powershell.exe costs ~20s on a fresh runner, which every check would
+      # otherwise pay separately.
+      - name: Warm PowerShell
+        shell: pwsh
+        run: |
+          powershell.exe -NoProfile -NonInteractive -Command "$PSVersionTable.PSVersion.Major"
+
       - name: Verify
         run: npm run verify
