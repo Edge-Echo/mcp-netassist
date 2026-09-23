@@ -1,8 +1,11 @@
 # The gate this repository's claims depend on.
 #
-# No `cache:` here: this repository ships a pnpm lockfile and no package-lock.json, and
-# setup-node's `cache: npm` fails outright with "Dependencies lock file is not found".
-# Caching is an optimisation; correctness first.
+# Runs on windows-latest because the checks shell out to powershell.exe, which does not
+# exist on ubuntu-latest. Verified by a failing run: "spawn powershell.exe ENOENT" on
+# almost every tool. A cross-platform promise needs cross-platform code, not a Linux runner.
+#
+# No `cache:` here either: this repository ships a pnpm lockfile and no package-lock.json,
+# and setup-node's `cache: npm` fails outright with "Dependencies lock file is not found".
 name: verify
 
 on:
@@ -12,7 +15,7 @@ on:
 
 jobs:
   verify:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
 

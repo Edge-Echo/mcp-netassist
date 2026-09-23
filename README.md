@@ -16,6 +16,19 @@ Built for the China-network reality: flaky GitHub, proxies that are half-configu
 
 > Windows-only for now: the checks call PowerShell. The protocol layer is portable; a POSIX backend is the obvious next step.
 
+
+## Platform
+
+**Windows.** The checks read the system proxy from the Windows registry and shell out to
+`powershell.exe`; on Linux and macOS the tools start but their checks cannot run, and they
+report `PowerShell failed: spawn powershell.exe ENOENT` rather than pretending to have
+checked something.
+
+The packaging is portable (any MCP client can connect, the server speaks plain stdio), but the
+*diagnostics* are Windows-specific today. A POSIX implementation would read the proxy from the
+environment and use `ss`/`lsof` for port probing; that is not written yet, so the README says
+Windows instead of implying otherwise.
+
 ## Tools
 
 | Tool | Answers |
