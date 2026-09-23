@@ -1,0 +1,21 @@
+﻿$ mcp-netassist  (stdio, 6 tools)
+
+net_github_status  -> DNS: 20.205.243.166, TCP 443: OPEN
+net_proxy_status   -> ProxyEnable: 1, ProxyServer: 127.0.0.1:10808
+net_proxy_probe    -> 10808 OPEN, 10809/7890/7897/8888/1080 CLOSED
+net_diag           -> DNS ok, TCP 443 open, HTTPS 200 in 312ms
+net_hosts_check    -> no github entries in hosts (clean)
+net_doctor         -> 6 checks: 5 ok, 1 info
+
+$ npm run verify     # a real MCP client connects to the server
+handshake ok
+registered 6 tool(s): net_github_status, net_proxy_status, net_proxy_probe,
+                      net_diag, net_hosts_check, net_doctor
+  PASS net_github_status (58 chars)
+  PASS net_proxy_status (142 chars)
+  PASS net_proxy_probe (196 chars)
+  PASS net_diag (231 chars)
+  PASS net_hosts_check (46 chars)
+  PASS net_doctor (512 chars)
+
+ALL PASS
