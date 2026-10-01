@@ -1,0 +1,28 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+  "name": "io.github.Edge-Echo/mcp-netassist",
+  "description": "Network and proxy diagnostics for Windows: GitHub reachability, system proxy settings, local proxy port probing, DNS/TCP/HTTP checks, hosts conflict scanning, and a doctor that says what to change.",
+  "repository": {
+    "url": "https://github.com/Edge-Echo/mcp-netassist",
+    "source": "github"
+  },
+  "version": "0.1.0",
+  "packages": [
+    {
+      "registryType": "npm",
+      "registryBaseUrl": "https://registry.npmjs.org",
+      "identifier": "mcp-netassist",
+      "version": "0.1.0",
+      "runtimeHint": "npx",
+      "transport": {
+        "type": "stdio"
+      },
+      "runtimeArguments": [
+        {
+          "value": "-y",
+          "type": "positional"
+        }
+      ]
+    }
+  ]
+}

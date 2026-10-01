@@ -69,9 +69,47 @@ A 200 on `https://glama.ai/mcp/servers/<owner>/<repo>` confirms the entry is pub
 grades, category and last-updated time. Cheap to check, and it settles "are we actually listed"
 without an account.
 
+
+## Official MCP Registry
+
+We are not on it. Queried directly:
+
+```
+registry.modelcontextprotocol.io/v0/servers?search=netassist   ->  0 results
+```
+
+This one matters more than the others: it is the registry other clients and directories read, so
+being absent here keeps propagating.
+
+`server.json` is committed at the repository root and follows
+`https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json`, copied from a live
+entry rather than from documentation. Publishing:
+
+```bash
+# Authentication is GitHub OAuth, so this step needs the repository owner.
+npx -y @modelcontextprotocol/mcp-publisher login github
+npx -y @modelcontextprotocol/mcp-publisher publish
+```
+
+The name is namespaced `io.github.Edge-Echo/mcp-netassist` because ownership is verified through
+GitHub; the package itself is the npm one, run with `npx -y`.
+
+**Keeping it current:** the registry pins a version, so each npm release needs a matching
+`server.json` bump and republish, or the entry advertises a version that is no longer newest.
+
+## Other directories checked
+
+| Directory | Result |
+|---|---|
+| Smithery | not listed; needs `smithery.yaml` in the repo or the web UI |
+| PulseMCP | API returns 410 (version retired); check the site's submit form |
+| mcp.so | API returned 500 from here; check the site |
+| LobeHub | probe 404; check the site |
+
 ## Status
 
 | Directory | State |
 |---|---|
 | Glama | listed, claimed |
 | punkpeye/awesome-mcp-servers | PR open, `mergeable=clean`, format check passing |
+| Official MCP Registry | not listed — `server.json` prepared, needs an authenticated publish |
