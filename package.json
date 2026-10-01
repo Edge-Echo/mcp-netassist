@@ -1,6 +1,6 @@
 {
   "name": "mcp-netassist",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Network & proxy diagnostics as an MCP server: GitHub reachability, system proxy status, proxy port probing, DNS/TCP/HTTP diagnosis, hosts conflict scan and a doctor that suggests what to change. Works with any MCP client.",
   "type": "module",
   "license": "MIT",
@@ -46,5 +46,6 @@
   "devDependencies": {
     "@types/node": "^24.0.0",
     "typescript": "^5.7.0"
-  }
+  },
+  "mcpName": "io.github.Edge-Echo/mcp-netassist"
 }

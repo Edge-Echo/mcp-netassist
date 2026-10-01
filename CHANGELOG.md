@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.1
+
+Adds `mcpName`, which the official MCP registry requires in the published package to verify that
+the publisher owns the server name. Without it the registry rejects an otherwise valid
+`server.json` with "NPM package 'mcp-netassist' is missing required 'mcpName' field".
+
+No behaviour change.
+
 ## [0.1.0] - 2026-09-22
 
 ### Added
