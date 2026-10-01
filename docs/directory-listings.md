@@ -83,16 +83,31 @@ being absent here keeps propagating.
 
 `server.json` is committed at the repository root and follows
 `https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json`, copied from a live
-entry rather than from documentation. Publishing:
+entry rather than from documentation.
+
+### Publishing
+
+The publisher is **not an npm package** — it is a binary attached to releases of
+[modelcontextprotocol/registry](https://github.com/modelcontextprotocol/registry)
+(latest checked: `v1.8.1`).
+
+> Careful with the name: there is an unrelated package called `mcp-publisher` on npm. It is not
+> this tool.
 
 ```bash
+# Windows asset in v1.8.1: mcp-publisher_windows_amd64.tar.gz
+# Download and extract it from
+#   https://github.com/modelcontextprotocol/registry/releases/latest
+
 # Authentication is GitHub OAuth, so this step needs the repository owner.
-npx -y @modelcontextprotocol/mcp-publisher login github
-npx -y @modelcontextprotocol/mcp-publisher publish
+mcp-publisher login github
+
+# Run from the repository root, where server.json lives.
+mcp-publisher publish
 ```
 
 The name is namespaced `io.github.Edge-Echo/mcp-netassist` because ownership is verified through
-GitHub; the package itself is the npm one, run with `npx -y`.
+GitHub; the package is the npm one, run with `npx -y`.
 
 **Keeping it current:** the registry pins a version, so each npm release needs a matching
 `server.json` bump and republish, or the entry advertises a version that is no longer newest.
