@@ -112,6 +112,78 @@ GitHub; the package is the npm one, run with `npx -y`.
 **Keeping it current:** the registry pins a version, so each npm release needs a matching
 `server.json` bump and republish, or the entry advertises a version that is no longer newest.
 
+### Things that only a real publish reveals
+
+All five of these cost a round trip and none are in the registry's docs or the JSON schema.
+
+**1. Ownership is verified against the published npm package, not just `server.json`.**
+
+```
+400 Failed to publish server
+    registry validation failed for package 0 (mcp-netassist):
+    NPM package 'mcp-netassist' is missing required 'mcpName' field.
+    Add this to your package.json: "mcpName": "io.github.Edge-Echo/mcp-netassist"
+```
+
+The package must carry `mcpName` matching the registry name, and because it is read from the
+*tarball*, it requires an npm release — a local edit does nothing. Hence 0.1.1.
+
+**2. The registry JWT expires quickly.** A publish run ten minutes after login returned:
+
+```
+401 Unauthorized: Invalid or expired Registry JWT token
+    failed to parse token: token has invalid claims: token is expired
+```
+
+Login and publish should be back to back, not separated by other work.
+
+**3. A 504 right after releasing the npm version is propagation, not a bad manifest.**
+
+```
+504 Gateway Time-out (nginx)
+```
+
+The registry fetches the package to check `mcpName`, so it can time out while npm's CDN catches
+up. Retrying the same command succeeded with no changes.
+
+**4. The publisher binary does not use the system proxy.** Behind a local proxy it fails with:
+
+```
+read tcp ...: wsarecv: A connection attempt failed because the connected party
+did not properly respond
+```
+
+It is a Go binary, so `HTTPS_PROXY` / `HTTP_PROXY` are honoured — set them explicitly rather than
+relying on the OS proxy setting.
+
+**5. It can only write inside the working tree.** Storing the token failed with:
+
+```
+Error: failed to create config directory: mkdir C:\Users\Administrator\.config\mcp-publisher: Access is denied.
+```
+
+Directories created by an ordinary shell in the same place succeeded, so this is a write
+restriction on the binary rather than a filesystem permission problem. Redirecting
+`USERPROFILE` makes `~/.config` resolve inside the working tree:
+
+```powershell
+$env:USERPROFILE = 'C:\Users\Administrator\Desktop\Harness\.publisher-home'
+$env:HTTPS_PROXY = 'http://127.0.0.1:10808'
+mcp-publisher login github   # then publish immediately
+```
+
+**Background processes:** a PowerShell `Start-Job` does not survive the command that created it,
+so it cannot be used to hold a login open across steps. Whatever supervises the run has to be the
+thing that owns the process.
+
+**Verifying the result:** the exit code is not the evidence. Query the registry:
+
+```bash
+curl -s 'https://registry.modelcontextprotocol.io/v0/servers?search=netassist'
+```
+
+A published entry carries `_meta."io.modelcontextprotocol.registry/official"`.
+
 ## Other directories checked
 
 | Directory | Result |
@@ -127,4 +199,4 @@ GitHub; the package is the npm one, run with `npx -y`.
 |---|---|
 | Glama | listed, claimed |
 | punkpeye/awesome-mcp-servers | PR open, `mergeable=clean`, format check passing |
-| Official MCP Registry | not listed — `server.json` prepared, needs an authenticated publish |
+| Official MCP Registry | **listed** as `io.github.Edge-Echo/mcp-netassist@0.1.1` |
