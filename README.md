@@ -1,22 +1,26 @@
 # mcp-netassist
 
+**Network and proxy diagnostics your agent can run itself — in any MCP client: Claude Code, Cursor, Claude Desktop or DSH.**
+
+### When you need this
+
+- Your MCP client cannot reach GitHub or npm and you want the agent to find out why
+- You want the same diagnostics in every editor instead of one plugin per host
+- You are tired of the agent guessing at network problems
+
+The score badge says it plainly: this server is listed on Glama, claimed by its maintainer, with its tool definitions rated A. Requires Windows — see Platform below.
+
 ![mcp-netassist](https://raw.githubusercontent.com/Edge-Echo/mcp-netassist/main/banner.svg)
 
 [![npm version](https://img.shields.io/npm/v/mcp-netassist?color=8b5cf6&logo=npm)](https://www.npmjs.com/package/mcp-netassist)
 [![npm downloads](https://img.shields.io/npm/dm/mcp-netassist?color=a78bfa)](https://www.npmjs.com/package/mcp-netassist)
 [![license](https://img.shields.io/badge/license-MIT-c4b5fd)](LICENSE)
 
-> Part of the **dsh-toolkit family**: [dsh-mcp-bridge](https://github.com/Edge-Echo/dsh-mcp-bridge) · [dsh-win-toolkit](https://github.com/Edge-Echo/dsh-win-toolkit) · [dsh-netassist](https://github.com/Edge-Echo/dsh-netassist) · [dsh-driftwatch](https://github.com/Edge-Echo/dsh-driftwatch) · [mcp-netassist](https://github.com/Edge-Echo/mcp-netassist) · [dsh-ledger](https://github.com/Edge-Echo/dsh-ledger)
-
-**Network & proxy diagnostics as an [MCP](https://modelcontextprotocol.io) server.**
-
 Works with any MCP client — Claude Code, Claude Desktop, Cursor, Reasonix, CodeWhale, DeepSeek Harness. Point your agent at it and ask "is GitHub reachable?", "why is my proxy not working?", "what should I change?" — instead of guessing.
 
 Built for the China-network reality: flaky GitHub, proxies that are half-configured, hosts files that fight the proxy, and TUN mode that silently overrides the system proxy.
 
 > Windows-only for now: the checks call PowerShell. The protocol layer is portable; a POSIX backend is the obvious next step.
-
-
 
 ## Feedback
 
@@ -31,7 +35,6 @@ the case that never gets reported:
 [Tell me in an issue](../../issues/new?template=usage.yml) — or if something is already broken,
 just open a normal bug report.
 
-
 ## Platform
 
 **Windows.** The checks read the system proxy from the Windows registry and shell out to
@@ -43,7 +46,6 @@ The packaging is portable (any MCP client can connect, the server speaks plain s
 *diagnostics* are Windows-specific today. A POSIX implementation would read the proxy from the
 environment and use `ss`/`lsof` for port probing; that is not written yet, so the README says
 Windows instead of implying otherwise.
-
 
 ### Timing
 
