@@ -17,6 +17,21 @@ Built for the China-network reality: flaky GitHub, proxies that are half-configu
 > Windows-only for now: the checks call PowerShell. The protocol layer is portable; a POSIX backend is the obvious next step.
 
 
+
+## Feedback
+
+Installs are visible in the download counts; whether this helps is not. If you use it, one line
+about the actual task is worth more than a star — **particularly if it did not work**, which is
+the case that never gets reported:
+
+- what you were trying to do
+- whether it did it
+- what was missing or wrong
+
+[Tell me in an issue](../../issues/new?template=usage.yml) — or if something is already broken,
+just open a normal bug report.
+
+
 ## Platform
 
 **Windows.** The checks read the system proxy from the Windows registry and shell out to
